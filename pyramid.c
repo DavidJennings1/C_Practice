@@ -10,12 +10,12 @@ int main()
     printf("You entered %d\n", x);
     for (int i = 0; i < x; i++)
     {
-        int j = 0;
-        while (j <= x)
+        int j = x-1;
+        while (j >= 0)
         {
         build_screen(j);
         printf("\n");
-        j++;
+        j--;
         }
     return 0;
     }
