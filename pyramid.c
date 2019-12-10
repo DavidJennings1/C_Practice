@@ -6,19 +6,9 @@ int build_screen(int x);
 int main()
 {
     printf("Enter a positive integer > 0 for width\n");
-    int x = get_positive_int();
-    printf("You entered %d\n", x);
-    for (int i = 0; i < x; i++)
-    {
-        int j = x-1;
-        while (j >= 0)
-        {
-        build_screen(j);
-        printf("\n");
-        j--;
-        }
-    return 0;
-    }
+    int width = get_positive_int();
+    printf("You entered %d\n", width);
+    build_screen(width);
 }
 int get_positive_int(void)
 {
@@ -31,13 +21,15 @@ int get_positive_int(void)
 }
 int build_screen(int x)
 {
-    for (int i = 0; i < x; i++)
+    for (int i = x; i > 0; i--)
     {
-        // for (int j = 1; j++;)
-        {
-            printf("#");
-            // printf("Hello %d, %d\n", x, y);
-        }
-        // printf("\n");
+        int j = x;
+        while (j > 1)
+            {
+            printf(".");
+            j--;
+            }
+        x--;
+        printf("\n");
     }
 }
