@@ -20,7 +20,7 @@ int get_positive_int(void)
     while (i < 1);
 }
 int build_screen(int x)
-{
+{   int k = x;
     for (int i = x; i > 0; i--)
     {
         int j = x;
@@ -28,6 +28,11 @@ int build_screen(int x)
             {
             printf(".");
             j--;
+            }
+        while(k > 0)
+            {
+                printf("#");
+                k--;
             }
         x--;
         printf("\n");
