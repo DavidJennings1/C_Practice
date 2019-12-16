@@ -1,14 +1,14 @@
 #include <stdio.h>
 
 int get_positive_int(void);
-int build_screen(int x);
+int build_pyramid(int height);
 
 int main()
 {
-    printf("Enter a positive integer > 0 for width\n");
-    int width = get_positive_int();
-    printf("You entered %d\n", width);
-    build_screen(width);
+    printf("Enter a positive integer > 0 for height\n");
+    int height = get_positive_int();
+    printf("You entered %d\n", height);
+    build_pyramid(height);
 }
 int get_positive_int(void)
 {
@@ -19,25 +19,25 @@ int get_positive_int(void)
     } 
     while (i < 1);
 }
-int build_screen(int x)
+int build_pyramid(int height)
 {
-    int k = 1;
-    for (int i = x; i > 0; i--)
+    int hash_qty = 1;
+    for (int i = height; i > 0; i--)
     {
-        int j = x;
-        while (j > 1)
+        int space_qty = height;
+        while (space_qty > 1)
             {
                 printf(" ");
-                j--;
+                space_qty--;
             }
-        int m = k;
-        while(m > 0)
+        int j = hash_qty;
+        while(j > 0)
             {
                 printf("#");
-                m--;
+                j--;
             }
-        x--;
-        k++;
+        height--;
+        hash_qty++;
         printf("\n");
     }
 }
