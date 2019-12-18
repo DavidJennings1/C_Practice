@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include "cs50.h"
 void hello(int n);
 
 int main()
