@@ -22,23 +22,16 @@ int get_height(void)
 }
 void build_pyramid(int height)
 {
-    int hash_qty = 1;
     for (int i = height; i > 0; i--)
     {
-        int space_qty = height;
-        while (space_qty > 1)
-            {
-                printf(" ");
-                space_qty--;
-            }
-        int k = hash_qty;
-        while(k > 0)
-            {
-                printf("#");
-                k--;
-            }
-        height--;
-        hash_qty++;
+        for (int space_qty = i-1; space_qty > 0; space_qty--)
+        {
+            printf(" ");
+        }
+        for (int hash_qty = height-i+1; hash_qty > 0; hash_qty--)
+        {
+            printf("#");
+        }
         printf("\n");
     }
 }
