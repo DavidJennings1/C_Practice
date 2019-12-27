@@ -10,7 +10,7 @@ int checkInput(char* key);
 
 int main(int argc, char* argv[])
 {
-    if (argc != 2)
+    if ((argc != 2) || checkInput(argv[1]) == 99)
     {
         printf("Usage: ./caesar key");
         return 1;
@@ -23,17 +23,16 @@ int main(int argc, char* argv[])
 
 int checkInput(char* key)
 {
-    for (int i = 0, n = strlen(key); i < n; i++)
+     int n = strlen(key);
+    for (int i = 0; i < n; i++)
     {
         if (key[i] < 48 || key[i] > 57)
         {
             printf("not a number\n");
-            break;
-        }
-        else
-        {
-            int idx = atoi(key);
-            return idx;
+            return 99;
         }
     }
+    int idx = atoi(key);
+    printf("Result of atoi: %i\n", idx);
+    return idx;
 }
