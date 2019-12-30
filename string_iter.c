@@ -4,6 +4,16 @@ until nul character */;
 #include <stdio.h>
 #include <string.h>
 
+struct A
+{
+    A() {
+        printf("asdf\n");
+    }
+
+};
+
+A a;
+
 int main(int argc, char* argv[])
 {
     for (int i = 1; i < argc; i++)
