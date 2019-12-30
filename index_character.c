@@ -15,14 +15,11 @@ int main(int argc, char* argv[])
         oldChar = argv[1][i];
         if (oldChar >= 97 && oldChar <= 122)
         {
-            if (key + oldChar > 122)
-            {
-                newChar = ((key + oldChar) % 26) + (oldChar - 122) + 96;
-            }
-            else
-            {
-                newChar = oldChar + key;
-            }
+            newChar = ((key + oldChar) % 26) + oldChar;
+            if (newChar > 122)
+                {
+                    newChar = (newChar - 122) + 96;
+                }
         }
         else
         {
