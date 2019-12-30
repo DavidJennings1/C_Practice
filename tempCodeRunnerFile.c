@@ -1,1 +1,0 @@
-int leftAfterQuarters = (cents % 25);
