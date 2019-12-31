@@ -1,32 +1,37 @@
 // Shift characters in string by amount
 
+#include <cs50.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
-int main(int argc, char* argv[])
+int main(int argc, string argv[])
 {
     printf("input: %s\n", argv[1]);
     char oldChar;
     char newChar;
-    int key = 1;
-    int n = strlen(argv[1]);
+    int key = atoi(argv[1]);
+    string plainText = get_string("Enter plain text: ");
+    printf("%s\n", plainText);
+    int n = strlen(plainText);
     for (int i = 0; i < n; i++)
     {
-        oldChar = argv[1][i];
-        if (oldChar >= 'a' && oldChar <= 'z')
+        oldChar = plainText[i];
+        if (oldChar >= 65 && oldChar <= 90)
+        {
+            newChar = (((oldChar - 65) + key) % 26) + 65;
+        }
+        else if (oldChar >= 97 && oldChar <= 122)
         {
             newChar = (((oldChar - 96) + key) % 26) + 96;
-            // if (newChar > 122)
-            //     {
-            //         newChar = (newChar - 122) + 96;
-            //     }
         }
         else
         {
             newChar = oldChar;
         }
-        printf("oldChar: %c\n", oldChar);
-        printf("newChar: %c\n", newChar);
+        // printf("oldChar: %c\n", oldChar);
+        printf("%c", newChar);
     }
+    printf("\n");
     return 0;
 }
