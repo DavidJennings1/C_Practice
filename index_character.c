@@ -7,7 +7,6 @@
 
 int main(int argc, string argv[])
 {
-    printf("input: %s\n", argv[1]);
     char oldChar;
     char newChar;
     int key = atoi(argv[1]);
@@ -29,7 +28,6 @@ int main(int argc, string argv[])
         {
             newChar = oldChar;
         }
-        // printf("oldChar: %c\n", oldChar);
         printf("%c", newChar);
     }
     printf("\n");
