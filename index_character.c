@@ -11,9 +11,9 @@ int main(int argc, string argv[])
     char oldChar;
     char newChar;
     int key = atoi(argv[1]);
-    string plainText = get_string("Enter plain text: ");
-    printf("%s\n", plainText);
+    string plainText = get_string("plaintext: ");
     int n = strlen(plainText);
+    printf("ciphertext: ");
     for (int i = 0; i < n; i++)
     {
         oldChar = plainText[i];

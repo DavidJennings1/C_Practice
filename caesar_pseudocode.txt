@@ -1,0 +1,10 @@
+1) check if input array is 2 elements
+2) check if each char in [1] is made up of all numbers
+3) convert array[1] to int
+4) return int key
+5) prompt for plaintext (get_string)
+5) add key to each char in string
+6) check each char in string for letter 
+7) if letter, index by key amount
+8) printf ciphertext
+
