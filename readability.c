@@ -5,11 +5,30 @@
 
 #include <cs50.h>
 #include <stdio.h>
+#include <string.h>
 
 int main()
 {
     string inputString = (get_string("Text: "));
     printf("%s\n", inputString);
     int letterCount;
+    int wordCount;
     int sentenceCount;
+    int n = strlen(inputString);
+    for (int i = 0; i < n; i++)
+    {
+        if (inputString[i] == ' ')
+        {
+            wordCount++;
+        }
+        else if (inputString[i] == 33 || inputString[i] == 46 || inputString[i] == 63)
+        {
+            sentenceCount++;
+        }
+        else
+        {
+            letterCount++;
+        }
+    }
+    printf("Letters: %i\nWords: %i\nSentences :%i", letterCount, wordCount, sentenceCount);
 }
