@@ -128,23 +128,25 @@ int main(int argc, string argv[])
 // Record preference if vote is valid
 bool vote(int voter, int rank, string name)
 {
+    printf("rank %d\n", rank);
     // TODO
-    int idx = 0;
+    int j;
     for (int i = 0; i < candidate_count; i++)
     {
         if (!strcmp(candidates[i].name, name))
         {
-            idx = i;
-            preferences[i][idx] = voter, i;
+            // preferences[i][j] = rank;
+            printf("j = %d\n", preferences[i][j]);
+
             
-            for (int j = 0; j < voter_count; j++)
-            {
-                preferences[i][j] = voter, i;
-                printf("i = %d: j = %d\n", preferences[i], preferences[i][j]);
-                // voter++;
-                // rank++;
-            }
-            printf("poop");
+            // for (int j = 0; j < voter_count; j++)
+            // {
+            //     preferences[i][j] = rank;
+            //     printf("j = %d\n", preferences[i][j]);
+            //     // voter++;
+            //     // rank++;
+            // }
+            printf("poop\n");
             return true;
         }
     }
