@@ -135,17 +135,8 @@ bool vote(int voter, int rank, string name)
     {
         if (!strcmp(candidates[i].name, name))
         {
-            // preferences[i][j] = rank;
-            printf("j = %d\n", preferences[i][j]);
-
+            preferences[i][j] = rank;
             
-            // for (int j = 0; j < voter_count; j++)
-            // {
-            //     preferences[i][j] = rank;
-            //     printf("j = %d\n", preferences[i][j]);
-            //     // voter++;
-            //     // rank++;
-            // }
             printf("poop\n");
             return true;
         }
