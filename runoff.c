@@ -173,6 +173,7 @@ bool print_winner(void)
             return false;
         }
     }
+    return true;
 }
 
 // Return the minimum number of votes any remaining candidate has
@@ -204,6 +205,7 @@ bool is_tie(int min)
             return true;
         }
     }
+    return false;
 }
 
 // Eliminate the candidate (or candidiates) in last place
