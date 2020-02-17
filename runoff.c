@@ -168,12 +168,8 @@ bool print_winner(void)
             printf("%s\n", candidates[i].name);
             return true;
         }
-        else
-        {
-            return false;
-        }
     }
-    return true;
+    return false;
 }
 
 // Return the minimum number of votes any remaining candidate has
@@ -195,12 +191,7 @@ bool is_tie(int min)
 {
     for (int i = 0; i < candidate_count; i++)
     {
-        if (candidates[i].votes != min)
-        {
-            return false;
-            break;
-        }
-        else
+        if (candidates[i].votes == min)
         {
             return true;
         }
