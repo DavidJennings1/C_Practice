@@ -14,6 +14,9 @@ int main(int argc, char *argv[])
         printf("Usage: ./recover filename");
         return 1;
     }
+    else // Prompt for input text, generate cipher output
+    {
+    }
 
 }
 // Test key input for validity

@@ -6,13 +6,9 @@ until nul character */;
 
 struct A
 {
-    A() {
-        printf("asdf\n");
-    }
-
+    int x[3];
+    int y[4];
 };
-
-A a;
 
 int main(int argc, char* argv[])
 {
