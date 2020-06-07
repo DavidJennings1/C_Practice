@@ -15,17 +15,17 @@ int main(int argc, char *argv[])
         return 1;
     }
     int blockCount;
-    BYTE buffer = malloc((blockCount * 512) * sizeof(BYTE));
+    int* buffer = malloc(3000 * sizeof(int));
 
-    BYTE test[20484];
     FILE* file = fopen(argv[1], "r");
     fread(buffer, 512, 4, file);
 
-    printf("%x, %x, %x, %x\n", test[0], test[1], test[2], test[3]);
-    printf("%x, %x, %x, %x\n", test[511], test[512], test[513], test[514]);
-    printf("%x, %x, %x, %x\n", test[1024], test[1025], test[1026], test[1027]);
+    printf("%x, %x, %x, %x\n", buffer[0], buffer[1], buffer[2], buffer[3]);
+    printf("%x, %x, %x, %x\n", buffer[511], buffer[512], buffer[513], buffer[514]);
+    printf("%x, %x, %x, %x\n", buffer[1024], buffer[1025], buffer[1026], buffer[1027]);
 
     fclose(file);
+    // free(buffer);
 
 }
 // Test key input for validity
