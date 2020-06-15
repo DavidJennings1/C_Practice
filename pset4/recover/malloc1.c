@@ -9,7 +9,7 @@ typedef uint8_t BYTE;
 
 int main()
 {
-    int* b = malloc(sizeof(BYTE));
+    int* b = malloc((512 * 4 )* sizeof(BYTE));
     if (b == NULL)
     {
         printf("crap");
@@ -18,9 +18,12 @@ int main()
     for (int i = 0; i < 512; i++)
     {
         b[i] = i;
+        // printf("%d\n", b[i]);
+    }
+    for (int i = 0; i < 512; i++)
+    {
         printf("%d\n", b[i]);
     }
-    // printf("%d\n", b[52]);
 
     free(b);
 
