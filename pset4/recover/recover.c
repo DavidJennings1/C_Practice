@@ -7,7 +7,7 @@ typedef uint8_t BYTE;
 
 int checkInput(char* key);
 int readBlock(BYTE* buffer, int blockCount, char* key);
-int writeBlock(BYTE* buffer);
+int writeBlock(BYTE* buffer, int blockCount);
 
 
 int main(int argc, char *argv[])
@@ -25,25 +25,29 @@ int main(int argc, char *argv[])
 
 
     while(1)
-    {
-    if (is_jpg == 1)
 
     {
-        for (int i = 0; i < 512; i++)
-    {
-        printf("%x\n", buffer[i]);
-    }
-        printf("from card.raw %x, %x, %x, %x\n", buffer[0], buffer[1], buffer[2], buffer[3]);
-        writeBlock(buffer);
+        if (is_jpg == 1)
+        {
+        writeBlock(buffer, blockCount);
+        blockCount++;
+        // While first 4 bytes are not start of jpg, append block to file
+        while (readBlock(buffer, blockCount, argv[1]) == 0)
+        {
+            writeBlock(buffer, blockCount);
+            printf("blockCount = %d\n", blockCount);
+            blockCount++;
+        }
+
         break;
-    }
+        }
 
     else
     {
         blockCount++;
         is_jpg = readBlock(buffer, blockCount, argv[1]);
     }
-    }
+}
     printf("%d\n", blockCount);
 
     FILE* file2 = fopen("pic.jpg", "r");
@@ -52,6 +56,12 @@ int main(int argc, char *argv[])
     printf("from pic.jpg %x, %x, %x, %x\n", buffer[0], buffer[1], buffer[2], buffer[3]);
 
     fclose(file2);
+
+    FILE* file = fopen("card.raw", "r");
+    fseek(file, (225 * 512), SEEK_SET);
+    fread(buffer, 1, 512, file);
+    printf("block 225 %x, %x, %x, %x\n", buffer[0], buffer[1], buffer[2], buffer[3]);
+    fclose(file);
 
     free(buffer);
 
@@ -67,18 +77,19 @@ int checkInput(char* key)
         printf("Fail");
         return 1;
     }
+
+    
 }
 
     // Read block to buffer
 int readBlock(BYTE* buffer, int blockCount, char* key)
 {
-    printf("in function%d\n", blockCount);
+    printf("in readBlock function: blockCount = %d\n", blockCount);
 
     FILE* file = fopen(key, "r");
     fseek(file, (blockCount * 512), SEEK_SET);
     fread(buffer, 1, 512, file);
     fclose(file);
-
 
     if (buffer[0] == 0xff & buffer[1] == 0xd8 & buffer[2] == 0xff & (buffer[3] >= 0xe0 & buffer[3]<= 0xef))
     {
@@ -91,9 +102,10 @@ int readBlock(BYTE* buffer, int blockCount, char* key)
     return 0;
 }
 
-int writeBlock(BYTE* buffer)
+int writeBlock(BYTE* buffer, int blockCount)
 {
-        FILE* test = fopen("pic.jpg", "wb");
-        fwrite(buffer, 1, 512, test);
-        fclose(test);
+    printf("in writeBlock function: blockCount = %d\n", blockCount);
+    FILE* test = fopen("pic.jpg", "ab");
+    fwrite(buffer, 1, 512, test);
+    fclose(test);
 }
