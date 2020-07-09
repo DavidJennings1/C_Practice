@@ -77,6 +77,7 @@ int checkInput(char* key)
         printf("Fail");
         return 1;
     }
+    return 0;
 
     
 }
@@ -108,4 +109,5 @@ int writeBlock(BYTE* buffer, int blockCount)
     FILE* test = fopen("pic.jpg", "ab");
     fwrite(buffer, 1, 512, test);
     fclose(test);
+    return 0;
 }
