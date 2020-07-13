@@ -91,22 +91,23 @@ int readBlock(BYTE* buffer, int blockCount, char* key)
     fseek(file, (blockCount * 512), SEEK_SET);
     fread(buffer, 1, 512, file);
     fclose(file);
+    printf("buffer %x, %x, %x, %x\n", buffer[0], buffer[1], buffer[2], buffer[3]);
 
-    if (buffer[0] == 0xff & buffer[1] == 0xd8 & buffer[2] == 0xff & (buffer[3] >= 0xe0 & buffer[3]<= 0xef))
+    if (buffer[0] == 0xff & buffer[1] == 0xd8 & buffer[2] == 0xff & (buffer[3] >= 0xe0 & buffer[3] <= 0xef))
     {
         return 1;
     }
     else
     {
         return 0;
-    }    
+    }
     return 0;
 }
 
 int writeBlock(BYTE* buffer, int blockCount)
 {
     printf("in writeBlock function: blockCount = %d\n", blockCount);
-    FILE* test = fopen("pic.jpg", "ab");
+    FILE* test = fopen("pic.jpg", "a");
     fwrite(buffer, 1, 512, test);
     fclose(test);
     return 0;
